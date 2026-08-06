@@ -18,7 +18,7 @@ public class DataLoader {
             repository.save(new Employee(null, "Rahul", "Cloud", 60000));
             repository.save(new Employee(null, "Priya", "Testing", 45000));
             repository.save(new Employee(null, "Arun", "Development", 70000));
-
+            repository.save(new Employee(null,"Rahul", "Cloud Engineer", 65000));
         };
     }
 }
