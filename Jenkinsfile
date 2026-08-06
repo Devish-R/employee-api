@@ -13,15 +13,9 @@ pipeline {
             }
         }
 
-        stage('Stop Old Container') {
-            steps {
-                sh 'docker stop employee-api || true'
-            }
-        }
-
         stage('Remove Old Container') {
             steps {
-                sh 'docker rm employee-api || true'
+                sh 'docker rm -f employee-api || true'
             }
         }
 
@@ -29,6 +23,16 @@ pipeline {
             steps {
                 sh 'docker run -d -p 8081:8080 --name employee-api employee-api:v1'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Application deployed successfully.'
+        }
+
+        failure {
+            echo 'Pipeline failed. Check the console output.'
         }
     }
 }
